@@ -1,6 +1,9 @@
 package com.galdhra.fnpers.entities;
 
+import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -8,6 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,12 +28,17 @@ public class User {
 	private Date birthDate;
 	private String profession;
 	
-	@Column(name = "profile_creation_date")
-	private Date profileCreationDate;
+	@Column(name = "profile_creation_date", columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+	private Instant profileCreationDate;
+	
+
+	@OneToMany(mappedBy = "user")
+	private List<Account> accounts = new ArrayList<>();
+	
 	
 	public User() {}
 
-	public User(Long id, String name, String email, Date birthDate, String profession,Date profileCreationDate) {
+	public User(Long id, String name, String email, Date birthDate, String profession,Instant profileCreationDate) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -79,12 +88,18 @@ public class User {
 	}
 	
 
-	public Date getProfileCreationDate() {
+	public Instant getProfileCreationDate() {
 		return profileCreationDate;
 	}
 
-	public void setProfileCreationDate(Date profileCreationDate) {
+	public void setProfileCreationDate(Instant profileCreationDate) {
 		this.profileCreationDate = profileCreationDate;
+	}
+	
+	
+
+	public List<Account> getAccounts() {
+		return accounts;
 	}
 
 	@Override
