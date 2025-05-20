@@ -23,10 +23,11 @@ public class CreditCard {
 	private Double limit;
 	private Date dueDate;
 	private Boolean payed;
+	private Bank bank;
 
 	public CreditCard() {}
 
-	public CreditCard(Long id, String name, String banner, Integer number, Double limit, Date dueDate, Boolean payed) {
+	public CreditCard(Long id, String name, String banner, Integer number, Double limit, Date dueDate, Boolean payed, Bank bank) {
 		super();
 		this.id = id;
 		this.name = name;
