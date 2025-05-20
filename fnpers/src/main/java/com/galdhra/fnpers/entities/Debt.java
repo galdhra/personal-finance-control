@@ -1,0 +1,148 @@
+package com.galdhra.fnpers.entities;
+
+import java.util.Date;
+import java.util.Objects;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tb_debt")
+public class Debt {
+	
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY )
+	private Long id;
+	private String name;
+	private Double amount;
+	private Double interest;
+	private Double origin;
+	private Date dueDate;
+	private Boolean stallment;
+	private Boolean payed;
+	
+	
+	private Debt() {};
+
+
+	public Debt(Long id, String name, Double amount, Double interest, Double origin, Date dueDate, Boolean stallment,
+			Boolean payed) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.amount = amount;
+		this.interest = interest;
+		this.origin = origin;
+		this.dueDate = dueDate;
+		this.stallment = stallment;
+		this.payed = payed;
+	}
+
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public Double getAmount() {
+		return amount;
+	}
+
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
+
+
+	public Double getInterest() {
+		return interest;
+	}
+
+
+	public void setInterest(Double interest) {
+		this.interest = interest;
+	}
+
+
+	public Double getOrigin() {
+		return origin;
+	}
+
+
+	public void setOrigin(Double origin) {
+		this.origin = origin;
+	}
+
+
+	public Date getDueDate() {
+		return dueDate;
+	}
+
+
+	public void setDueDate(Date dueDate) {
+		this.dueDate = dueDate;
+	}
+
+
+	public Boolean getStallment() {
+		return stallment;
+	}
+
+
+	public void setStallment(Boolean stallment) {
+		this.stallment = stallment;
+	}
+
+
+	public Boolean getPayed() {
+		return payed;
+	}
+
+
+	public void setPayed(Boolean payed) {
+		this.payed = payed;
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(amount, id, origin);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Debt other = (Debt) obj;
+		return Objects.equals(amount, other.amount) && Objects.equals(id, other.id)
+				&& Objects.equals(origin, other.origin);
+	};
+	
+	
+	
+
+}

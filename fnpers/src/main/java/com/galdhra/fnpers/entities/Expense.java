@@ -32,7 +32,7 @@ public class Expense {
 	private String observation;
 	
 	
-	public Expense() {}
+	public Expense() {};
 
 
 	public Expense(Long id, String name, Date date, String description, Double amount, Boolean recurring, Boolean stallment,

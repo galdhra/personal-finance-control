@@ -11,33 +11,36 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_income")
-public class Income {
+@Table(name = "tb_goal")
+public class Goal {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Long id;
 	private String name;
-	private String source;	
-	private Date date;
-	private Double amount;
+	private Double target;
+	private Double nowAmount;
+	private Date due;
 	
 	@Column(columnDefinition = "TEXT")
 	private String observation;
 	
 	
-	private Income() {};
+	
+	public Goal() {}
 
 
-	public Income(Long id, String name, String source, Date date, Double amount, String observation) {
+
+	public Goal(Long id, String name, Double target, Double nowAmount, Date due, String observation) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.source = source;
-		this.date = date;
-		this.amount = amount;
+		this.target = target;
+		this.nowAmount = nowAmount;
+		this.due = due;
 		this.observation = observation;
 	}
+
 
 
 	public Long getId() {
@@ -45,9 +48,11 @@ public class Income {
 	}
 
 
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 
 
 	public String getName() {
@@ -55,39 +60,47 @@ public class Income {
 	}
 
 
+
 	public void setName(String name) {
 		this.name = name;
 	}
 
 
-	public String getSource() {
-		return source;
+
+	public Double getTarget() {
+		return target;
 	}
 
 
-	public void setSource(String source) {
-		this.source = source;
+
+	public void setTarget(Double target) {
+		this.target = target;
 	}
 
 
-	public Date getDate() {
-		return date;
+
+	public Double getNowAmount() {
+		return nowAmount;
 	}
 
 
-	public void setDate(Date date) {
-		this.date = date;
+
+	public void setNowAmount(Double nowAmount) {
+		this.nowAmount = nowAmount;
 	}
 
 
-	public Double getAmount() {
-		return amount;
+
+	public Date getDue() {
+		return due;
 	}
 
 
-	public void setAmount(Double amount) {
-		this.amount = amount;
+
+	public void setDue(Date due) {
+		this.due = due;
 	}
+
 
 
 	public String getObservation() {
@@ -95,15 +108,18 @@ public class Income {
 	}
 
 
+
 	public void setObservation(String observation) {
 		this.observation = observation;
 	}
 
 
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(amount, date, id, name);
+		return Objects.hash(due, id, target);
 	}
+
 
 
 	@Override
@@ -114,13 +130,10 @@ public class Income {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Income other = (Income) obj;
-		return Objects.equals(amount, other.amount) && Objects.equals(date, other.date) && Objects.equals(id, other.id)
-				&& Objects.equals(name, other.name);
+		Goal other = (Goal) obj;
+		return Objects.equals(due, other.due) && Objects.equals(id, other.id) && Objects.equals(target, other.target);
 	};
 	
 	
-	
+
 }
-
-
