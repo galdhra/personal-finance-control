@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,7 +27,10 @@ public class CreditCard {
 	private Double limit;
 	private Date dueDate;
 	private Boolean payed;
-	private Bank bank;
+	
+	@ManyToOne
+	@JoinColumn(name="bank2_id")
+	private Bank bank2;
 
 
 	public CreditCard() {}
@@ -100,12 +105,9 @@ public class CreditCard {
 	}
 
 	public Bank getBank() {
-		return bank;
+		return bank2;
 	}
 
-	public void setBank(Bank bank) {
-		this.bank = bank;
-	}
 
 
 	@Override

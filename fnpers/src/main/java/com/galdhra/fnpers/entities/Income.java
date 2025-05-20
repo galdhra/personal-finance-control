@@ -1,7 +1,9 @@
 package com.galdhra.fnpers.entities;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import com.galdhra.fnpers.enums.TypeCycle;
 
@@ -10,6 +12,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -28,6 +34,20 @@ public class Income {
 	@Column(columnDefinition = "TEXT")
 	private String observation;
 	
+	
+	@ManyToOne
+	@JoinColumn(name="account_id")
+	private Account account;
+	
+	@ManyToOne
+	@JoinColumn(name="category_id")
+	private Category category;
+	
+	@ManyToMany
+	@JoinTable(name = "tb_budget_income",
+	joinColumns = @JoinColumn(name = "income_id"),
+	inverseJoinColumns = @JoinColumn(name = "budget_id"))
+	private Set<Budget> budgets = new HashSet<>();
 	
 	private Income() {};
 
@@ -111,6 +131,22 @@ public class Income {
 
 	public void setType(TypeCycle type) {
 		this.type = type;
+	}
+	
+
+
+	public Account getAccount() {
+		return account;
+	}
+
+
+	public Category getCategory() {
+		return category;
+	}
+
+
+	public Set<Budget> getBudgets() {
+		return budgets;
 	}
 
 

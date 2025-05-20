@@ -1,11 +1,15 @@
 package com.galdhra.fnpers.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,14 +17,23 @@ import jakarta.persistence.Table;
 public class Bank {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY )
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Integer place;
+	
+	@OneToMany(mappedBy = "bank1")
+	private List<BankAccount> accounts = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "bank2")
+	private List<CreditCard> creditCards = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "bank3")
+	private List<Investiment> investiments = new ArrayList<>();
+	
 	
 	public Bank() {}
 
 	public Bank(Long id, Integer place) {
-		super();
 		this.id = id;
 		this.place = place;
 	}
@@ -40,10 +53,19 @@ public class Bank {
 	public void setPlace(Integer place) {
 		this.place = place;
 	}
+	
+
+	public List<BankAccount> getAccounts() {
+		return accounts;
+	}
+
+	public List<CreditCard> getCreditCards() {
+		return creditCards;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, place);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -55,8 +77,11 @@ public class Bank {
 		if (getClass() != obj.getClass())
 			return false;
 		Bank other = (Bank) obj;
-		return Objects.equals(id, other.id) && Objects.equals(place, other.place);
-	};
+		return Objects.equals(id, other.id);
+	}
+	
+
+	
 	
 	
 

@@ -1,11 +1,16 @@
 package com.galdhra.fnpers.entities;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,7 +23,15 @@ public class Budget {
 	private String name;
 	private Double plannedPay;
 	private Double realPay;
+	
+	@ManyToOne
+	@JoinColumn(name="category_id")
 	private Category category;
+	
+
+	@ManyToMany(mappedBy = "budgets")
+	private Set<Income> products = new HashSet<>();
+	
 	
 	public Budget() {}
 

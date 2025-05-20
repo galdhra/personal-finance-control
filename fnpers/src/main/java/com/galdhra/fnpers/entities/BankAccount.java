@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,7 +19,10 @@ public class BankAccount {
 	private Long id;
 	private String name;
 	private Integer number;
-	private Bank bank;
+	
+	@ManyToOne
+	@JoinColumn(name="bank1_id")
+	private Bank bank1;
 	
 	public BankAccount() {}
 
@@ -26,7 +31,7 @@ public class BankAccount {
 		this.id = id;
 		this.name = name;
 		this.number = number;
-		this.bank = bank;
+		this.bank1 = bank;
 	}
 
 	public Long getId() {
@@ -54,16 +59,13 @@ public class BankAccount {
 	}
 
 	public Bank getBank() {
-		return bank;
+		return bank1;
 	}
 
-	public void setBank(Bank bank) {
-		this.bank = bank;
-	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(bank, id, number);
+		return Objects.hash(bank1, id, number);
 	}
 
 	@Override
@@ -75,7 +77,7 @@ public class BankAccount {
 		if (getClass() != obj.getClass())
 			return false;
 		BankAccount other = (BankAccount) obj;
-		return Objects.equals(bank, other.bank) && Objects.equals(id, other.id) && Objects.equals(number, other.number);
+		return Objects.equals(bank1, other.bank1) && Objects.equals(id, other.id) && Objects.equals(number, other.number);
 	};
 	
 	
