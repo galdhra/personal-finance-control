@@ -3,6 +3,8 @@ package com.galdhra.fnpers.entities;
 import java.util.Date;
 import java.util.Objects;
 
+import com.galdhra.fnpers.enums.TypeCycle;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,13 +26,14 @@ public class Debt {
 	private Date dueDate;
 	private Boolean stallment;
 	private Boolean payed;
+	private TypeCycle type;
 	
 	
 	private Debt() {};
 
 
 	public Debt(Long id, String name, Double amount, Double interest, Double origin, Date dueDate, Boolean stallment,
-			Boolean payed) {
+			Boolean payed, TypeCycle type) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -40,6 +43,7 @@ public class Debt {
 		this.dueDate = dueDate;
 		this.stallment = stallment;
 		this.payed = payed;
+		this.type = type;
 	}
 
 
@@ -120,6 +124,15 @@ public class Debt {
 
 	public void setPayed(Boolean payed) {
 		this.payed = payed;
+	}
+
+	public TypeCycle getType() {
+		return type;
+	}
+
+
+	public void setType(TypeCycle type) {
+		this.type = type;
 	}
 
 

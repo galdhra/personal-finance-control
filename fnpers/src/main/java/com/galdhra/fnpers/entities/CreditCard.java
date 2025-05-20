@@ -3,6 +3,8 @@ package com.galdhra.fnpers.entities;
 import java.util.Date;
 import java.util.Objects;
 
+import com.galdhra.fnpers.enums.TypeCycle;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,6 +27,7 @@ public class CreditCard {
 	private Boolean payed;
 	private Bank bank;
 
+
 	public CreditCard() {}
 
 	public CreditCard(Long id, String name, String banner, Integer number, Double limit, Date dueDate, Boolean payed, Bank bank) {
@@ -37,6 +40,73 @@ public class CreditCard {
 		this.dueDate = dueDate;
 		this.payed = payed;
 	}
+	
+	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getBanner() {
+		return banner;
+	}
+
+	public void setBanner(String banner) {
+		this.banner = banner;
+	}
+
+	public Integer getNumber() {
+		return number;
+	}
+
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
+
+	public Double getLimit() {
+		return limit;
+	}
+
+	public void setLimit(Double limit) {
+		this.limit = limit;
+	}
+
+	public Date getDueDate() {
+		return dueDate;
+	}
+
+	public void setDueDate(Date dueDate) {
+		this.dueDate = dueDate;
+	}
+
+	public Boolean getPayed() {
+		return payed;
+	}
+
+	public void setPayed(Boolean payed) {
+		this.payed = payed;
+	}
+
+	public Bank getBank() {
+		return bank;
+	}
+
+	public void setBank(Bank bank) {
+		this.bank = bank;
+	}
+
 
 	@Override
 	public int hashCode() {

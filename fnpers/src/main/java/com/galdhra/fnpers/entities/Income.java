@@ -3,6 +3,8 @@ package com.galdhra.fnpers.entities;
 import java.util.Date;
 import java.util.Objects;
 
+import com.galdhra.fnpers.enums.TypeCycle;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,6 +23,7 @@ public class Income {
 	private String source;	
 	private Date date;
 	private Double amount;
+	private TypeCycle type;
 	
 	@Column(columnDefinition = "TEXT")
 	private String observation;
@@ -29,13 +32,13 @@ public class Income {
 	private Income() {};
 
 
-	public Income(Long id, String name, String source, Date date, Double amount, String observation) {
-		super();
+	public Income(Long id, String name, String source, Date date, Double amount, TypeCycle type,String observation) {
 		this.id = id;
 		this.name = name;
 		this.source = source;
 		this.date = date;
 		this.amount = amount;
+		this.type = type;
 		this.observation = observation;
 	}
 
@@ -97,6 +100,17 @@ public class Income {
 
 	public void setObservation(String observation) {
 		this.observation = observation;
+	}
+	
+
+
+	public TypeCycle getType() {
+		return type;
+	}
+
+
+	public void setType(TypeCycle type) {
+		this.type = type;
 	}
 
 

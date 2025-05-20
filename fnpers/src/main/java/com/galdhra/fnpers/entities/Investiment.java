@@ -21,17 +21,19 @@ public class Investiment {
 	private Date date;
 	private Double initialAmount;
 	private Double redemption;
+	private Bank bank;
 	
 	@Column(columnDefinition = "TEXT")
 	private String observation;
 
-	public Investiment(Long id, String name, Date date, Double initialAmount, Double redemption, String observation) {
+	public Investiment(Long id, String name, Date date, Double initialAmount, Double redemption, Bank bank, String observation) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.date = date;
 		this.initialAmount = initialAmount;
 		this.redemption = redemption;
+		this.bank = bank;
 		this.observation = observation;
 	}
 
@@ -73,6 +75,14 @@ public class Investiment {
 
 	public void setRedemption(Double redemption) {
 		this.redemption = redemption;
+	}
+	
+	public Bank getBank() {
+		return bank;
+	}
+
+	public void setBank(Bank bank) {
+		this.bank = bank;
 	}
 
 	public String getObservation() {

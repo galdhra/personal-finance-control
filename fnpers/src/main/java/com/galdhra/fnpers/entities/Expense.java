@@ -3,6 +3,9 @@ package com.galdhra.fnpers.entities;
 import java.util.Date;
 import java.util.Objects;
 
+import com.galdhra.fnpers.enums.PayMethod;
+import com.galdhra.fnpers.enums.TypeCycle;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,9 +27,11 @@ public class Expense {
 	@Column(columnDefinition = "TEXT")
 	private String description;
 	private Double amount;
+	private PayMethod payMethod;
 	private Boolean recurring;
 	private Boolean stallment;
 	private Boolean payed;
+	private TypeCycle type;
 	
 	@Column(columnDefinition = "TEXT")
 	private String observation;
@@ -35,17 +40,18 @@ public class Expense {
 	public Expense() {};
 
 
-	public Expense(Long id, String name, Date date, String description, Double amount, Boolean recurring, Boolean stallment,
-			Boolean payed, String observation) {
-		super();
+	public Expense(Long id, String name, Date date, String description, Double amount, PayMethod payMethod, Boolean recurring, Boolean stallment,
+			Boolean payed, TypeCycle type, String observation) {
 		this.id = id;
 		this.name = name;
 		this.date = date;
 		this.description = description;
 		this.amount = amount;
+		this.payMethod = payMethod;
 		this.recurring = recurring;
 		this.stallment = stallment;
 		this.payed = payed;
+		this.type = type;
 		this.observation = observation;
 	}
 
@@ -100,6 +106,16 @@ public class Expense {
 	}
 
 
+	public PayMethod getPayMethod() {
+		return payMethod;
+	}
+
+
+	public void setPayMethod(PayMethod payMethod) {
+		this.payMethod = payMethod;
+	}
+
+
 	public Boolean getRecurring() {
 		return recurring;
 	}
@@ -137,6 +153,16 @@ public class Expense {
 
 	public void setObservation(String observation) {
 		this.observation = observation;
+	}
+
+
+	public TypeCycle getType() {
+		return type;
+	}
+
+
+	public void setType(TypeCycle type) {
+		this.type = type;
 	}
 
 
