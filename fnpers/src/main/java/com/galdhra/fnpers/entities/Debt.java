@@ -1,7 +1,9 @@
 package com.galdhra.fnpers.entities;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import com.galdhra.fnpers.enums.TypeCycle;
 
@@ -9,6 +11,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -28,13 +35,25 @@ public class Debt {
 	private Boolean payed;
 	private TypeCycle type;
 	
+	@OneToOne
+	@MapsId
+	private Expense expense;
+	
+	@ManyToMany
+	@JoinTable(name = "tb_budget_debt",
+	joinColumns = @JoinColumn(name = "debt_id"),
+	inverseJoinColumns = @JoinColumn(name = "budget_id"))
+	private Set<Budget> debtBudgets = new HashSet<>();
+	
+	@ManyToMany(mappedBy = "debtCreditCards")
+	private Set<CreditCard> creditCards = new HashSet<>();
+		
 	
 	private Debt() {};
 
 
 	public Debt(Long id, String name, Double amount, Double interest, Double origin, Date dueDate, Boolean stallment,
 			Boolean payed, TypeCycle type) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.amount = amount;

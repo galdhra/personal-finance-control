@@ -1,6 +1,8 @@
 package com.galdhra.fnpers.entities;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -11,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -28,9 +31,18 @@ public class Budget {
 	@JoinColumn(name="category_id")
 	private Category category;
 	
+	@OneToMany(mappedBy = "budget")
+	private List<Goal> goals = new ArrayList<>();
+	
 
-	@ManyToMany(mappedBy = "budgets")
-	private Set<Income> products = new HashSet<>();
+	@ManyToMany(mappedBy = "incomeBudgets")
+	private Set<Income> incomes = new HashSet<>();
+	
+	@ManyToMany(mappedBy = "expenseBudgets")
+	private Set<Expense> expenses = new HashSet<>();
+	
+	@ManyToMany(mappedBy = "debtBudgets")
+	private Set<Debt> debts = new HashSet<>();
 	
 	
 	public Budget() {}

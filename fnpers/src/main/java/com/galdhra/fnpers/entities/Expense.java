@@ -1,18 +1,24 @@
 package com.galdhra.fnpers.entities;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import com.galdhra.fnpers.enums.PayMethod;
 import com.galdhra.fnpers.enums.TypeCycle;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -41,6 +47,19 @@ public class Expense {
 	@ManyToOne
 	@JoinColumn(name="category_id")
 	private Category category;
+	
+	@ManyToOne
+	@JoinColumn(name="account_id")
+	private Account account;
+	
+	@ManyToMany
+	@JoinTable(name = "tb_budget_expense",
+	joinColumns = @JoinColumn(name = "expense_id"),
+	inverseJoinColumns = @JoinColumn(name = "budget_id"))
+	private Set<Budget> expenseBudgets = new HashSet<>();
+	
+	@OneToOne(mappedBy = "expense", cascade = CascadeType.ALL)
+	private Debt debt;
 	
 	
 	public Expense() {};
@@ -169,6 +188,26 @@ public class Expense {
 
 	public void setType(TypeCycle type) {
 		this.type = type;
+	}
+	
+
+	public Category getCategory() {
+		return category;
+	}
+
+
+	public Account getAccount() {
+		return account;
+	}
+
+
+	public Set<Budget> getExpenseBudgets() {
+		return expenseBudgets;
+	}
+
+
+	public Debt getDebt() {
+		return debt;
 	}
 
 

@@ -28,6 +28,9 @@ public class Account {
 	@OneToMany(mappedBy = "account")
 	private List<Income> incomes = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "account")
+	private List<Expense> expenses = new ArrayList<>();
+	
 
 	
 	

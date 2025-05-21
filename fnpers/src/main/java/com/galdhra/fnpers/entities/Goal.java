@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,6 +26,10 @@ public class Goal {
 	
 	@Column(columnDefinition = "TEXT")
 	private String observation;
+	
+	@ManyToOne
+	@JoinColumn(name="budget_id")
+	private Budget budget;
 	
 	
 	

@@ -47,7 +47,7 @@ public class Income {
 	@JoinTable(name = "tb_budget_income",
 	joinColumns = @JoinColumn(name = "income_id"),
 	inverseJoinColumns = @JoinColumn(name = "budget_id"))
-	private Set<Budget> budgets = new HashSet<>();
+	private Set<Budget> incomeBudgets = new HashSet<>();
 	
 	private Income() {};
 
@@ -145,8 +145,9 @@ public class Income {
 	}
 
 
-	public Set<Budget> getBudgets() {
-		return budgets;
+
+	public Set<Budget> getIncomeBudgets() {
+		return incomeBudgets;
 	}
 
 

@@ -1,7 +1,9 @@
 package com.galdhra.fnpers.entities;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import com.galdhra.fnpers.enums.TypeCycle;
 
@@ -10,6 +12,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -31,6 +35,12 @@ public class CreditCard {
 	@ManyToOne
 	@JoinColumn(name="bank2_id")
 	private Bank bank2;
+	
+	@ManyToMany
+	@JoinTable(name = "tb_credit_card_debt",
+	joinColumns = @JoinColumn(name = "credit_card_id"),
+	inverseJoinColumns = @JoinColumn(name = "debt_id"))
+	private Set<Debt> debtCreditCards = new HashSet<>();
 
 
 	public CreditCard() {}
