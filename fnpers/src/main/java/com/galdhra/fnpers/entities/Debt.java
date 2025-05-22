@@ -40,14 +40,16 @@ public class Debt {
 	@MapsId
 	private Expense expense;
 	
+
 	@ManyToMany
 	@JoinTable(name = "tb_budget_debt",
 	joinColumns = @JoinColumn(name = "debt_id"),
 	inverseJoinColumns = @JoinColumn(name = "budget_id"))
-	private Set<Budget> debtBudgets = new HashSet<>();
+	private Set<Budget> budget = new HashSet<>();
 	
 	@ManyToMany(mappedBy = "debtCreditCards")
 	private Set<CreditCard> creditCards = new HashSet<>();
+	
 	
 	@ManyToOne
 	@JoinColumn(name="account_id")
@@ -157,6 +159,48 @@ public class Debt {
 
 	public void setType(TypeCycle type) {
 		this.type = type;
+	}
+	
+
+	public Expense getExpense() {
+		return expense;
+	}
+
+
+	public void setExpense(Expense expense) {
+		this.expense = expense;
+	}
+
+
+	public Set<Budget> getBudget() {
+		return budget;
+	}
+
+
+
+
+	public Set<CreditCard> getCreditCards() {
+		return creditCards;
+	}
+
+
+	public void setCreditCards(Set<CreditCard> creditCards) {
+		this.creditCards = creditCards;
+	}
+
+
+	public Account getAccount() {
+		return account;
+	}
+
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+
+	public void setBudget(Set<Budget> budget) {
+		this.budget = budget;
 	}
 
 

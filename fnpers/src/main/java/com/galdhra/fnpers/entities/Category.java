@@ -29,6 +29,9 @@ public class Category {
 	@OneToMany(mappedBy = "category")
 	private List<Budget> budgets = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "category")
+	private List<Goal> goals = new ArrayList<>();
+	
 	public Category() {}
 
 	public Category(Long id, String name) {

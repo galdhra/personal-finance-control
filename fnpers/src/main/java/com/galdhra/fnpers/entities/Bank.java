@@ -19,6 +19,7 @@ public class Bank {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String name;
 	private Integer place;
 	
 	@OneToMany(mappedBy = "bank1")
@@ -33,8 +34,9 @@ public class Bank {
 	
 	public Bank() {}
 
-	public Bank(Long id, Integer place) {
+	public Bank(Long id, String name, Integer place) {
 		this.id = id;
+		this.name = name;
 		this.place = place;
 	}
 

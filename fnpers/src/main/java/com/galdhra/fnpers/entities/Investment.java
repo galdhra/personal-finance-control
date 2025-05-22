@@ -1,7 +1,11 @@
 package com.galdhra.fnpers.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,6 +13,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -32,12 +38,15 @@ public class Investment {
 	private Bank bank3;
 	
 	@ManyToOne
-	@JoinColumn(name="investBudget_id")
-	private Budget budget;
-	
-	@ManyToOne
 	@JoinColumn(name="account_id")
 	private Account account;
+	
+	@ManyToMany
+	@JoinTable(name = "tb_budget_investment",
+	joinColumns = @JoinColumn(name = "investment_id"),
+	inverseJoinColumns = @JoinColumn(name = "budget_id"))
+	private Set<Budget> investBudgets = new HashSet<>();
+	
 	
 
 	

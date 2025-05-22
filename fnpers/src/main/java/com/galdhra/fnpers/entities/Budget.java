@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -39,6 +40,7 @@ public class Budget {
 	@OneToMany(mappedBy = "goalBudget")
 	private List<Goal> goals = new ArrayList<>();
 	
+	
 
 	@ManyToMany(mappedBy = "incomeBudgets")
 	private Set<Income> incomes = new HashSet<>();
@@ -46,11 +48,11 @@ public class Budget {
 	@ManyToMany(mappedBy = "expenseBudgets")
 	private Set<Expense> expenses = new HashSet<>();
 	
-	@ManyToMany(mappedBy = "debtBudgets")
-	private Set<Debt> debts = new HashSet<>();
-	
 	@ManyToMany(mappedBy = "investBudgets")
-	private Set<Investment> investment = new HashSet<>();
+	private Set<Investment> investments = new HashSet<>();
+	
+
+
 	
 	
 	public Budget() {}

@@ -51,7 +51,88 @@ public class Account {
 	
 
 	
-	public Account() {};
+	public Account() {}
+
+	
+
+
+	public Account(Long id, String name, User user) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.user = user;
+	}
+
+
+
+
+
+
+	public Long getId() {
+		return id;
+	}
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+
+	public List<Income> getIncomes() {
+		return incomes;
+	}
+
+
+
+	public List<Expense> getExpenses() {
+		return expenses;
+	}
+
+
+
+	public List<Investment> getInvestments() {
+		return investments;
+	}
+
+
+
+	public List<BankAccount> getBankAccounts() {
+		return bankAccounts;
+	}
+
+
+
+	public List<Goal> getGoals() {
+		return goals;
+	}
+
+
+
+	public List<CreditCard> getCarditCards() {
+		return carditCards;
+	}
+
+
+
+	public List<Debt> getDebts() {
+		return debts;
+	}
+
+
+
+	public List<Budget> getBugdets() {
+		return bugdets;
+	}
+	
+	
 	
 	
 	
