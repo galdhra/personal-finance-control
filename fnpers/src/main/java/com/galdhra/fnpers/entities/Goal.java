@@ -29,7 +29,11 @@ public class Goal {
 	
 	@ManyToOne
 	@JoinColumn(name="budget_id")
-	private Budget budget;
+	private Budget goalBudget;
+	
+	@ManyToOne
+	@JoinColumn(name="account_id")
+	private Account account;
 	
 	
 	

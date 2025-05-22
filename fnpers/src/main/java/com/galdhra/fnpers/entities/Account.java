@@ -31,8 +31,25 @@ public class Account {
 	@OneToMany(mappedBy = "account")
 	private List<Expense> expenses = new ArrayList<>();
 	
-
+	@OneToMany(mappedBy = "account")
+	private List<Investment> investments = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "account")
+	private List<BankAccount> bankAccounts = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "account")
+	private List<Goal> goals = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "account")
+	private List<CreditCard> carditCards = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "account")
+	private List<Debt> debts = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "account")
+	private List<Budget> bugdets = new ArrayList<>();
+	
+
 	
 	public Account() {};
 	

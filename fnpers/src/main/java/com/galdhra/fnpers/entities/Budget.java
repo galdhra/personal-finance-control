@@ -31,7 +31,12 @@ public class Budget {
 	@JoinColumn(name="category_id")
 	private Category category;
 	
-	@OneToMany(mappedBy = "budget")
+	@ManyToOne
+	@JoinColumn(name="account_id")
+	private Account account;
+	
+	
+	@OneToMany(mappedBy = "goalBudget")
 	private List<Goal> goals = new ArrayList<>();
 	
 
@@ -43,6 +48,9 @@ public class Budget {
 	
 	@ManyToMany(mappedBy = "debtBudgets")
 	private Set<Debt> debts = new HashSet<>();
+	
+	@ManyToMany(mappedBy = "investBudgets")
+	private Set<Investment> investment = new HashSet<>();
 	
 	
 	public Budget() {}

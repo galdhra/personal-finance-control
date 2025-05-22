@@ -28,7 +28,7 @@ public class Bank {
 	private List<CreditCard> creditCards = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "bank3")
-	private List<Investiment> investiments = new ArrayList<>();
+	private List<Investment> investments = new ArrayList<>();
 	
 	
 	public Bank() {}

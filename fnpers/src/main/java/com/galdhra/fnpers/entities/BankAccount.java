@@ -24,6 +24,12 @@ public class BankAccount {
 	@JoinColumn(name="bank1_id")
 	private Bank bank1;
 	
+	@ManyToOne
+	@JoinColumn(name="account_id")
+	private Account account;
+	
+	
+	
 	public BankAccount() {}
 
 	public BankAccount(Long id, String name, Integer number, Bank bank) {

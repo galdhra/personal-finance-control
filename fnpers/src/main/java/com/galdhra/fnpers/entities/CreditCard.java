@@ -28,7 +28,7 @@ public class CreditCard {
 	private String name;
 	private String banner;
 	private Integer number;
-	private Double limit;
+	private Double creditLimit;
 	private Date dueDate;
 	private Boolean payed;
 	
@@ -36,22 +36,26 @@ public class CreditCard {
 	@JoinColumn(name="bank2_id")
 	private Bank bank2;
 	
+	@ManyToOne
+	@JoinColumn(name="account_id")
+	private Account account;
+	
 	@ManyToMany
 	@JoinTable(name = "tb_credit_card_debt",
 	joinColumns = @JoinColumn(name = "credit_card_id"),
 	inverseJoinColumns = @JoinColumn(name = "debt_id"))
-	private Set<Debt> debtCreditCards = new HashSet<>();
+	private Set<Debt>debtCreditCards = new HashSet<>();
 
 
 	public CreditCard() {}
 
-	public CreditCard(Long id, String name, String banner, Integer number, Double limit, Date dueDate, Boolean payed, Bank bank) {
+	public CreditCard(Long id, String name, String banner, Integer number, Double creditLimit, Date dueDate, Boolean payed, Bank bank) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.banner = banner;
 		this.number = number;
-		this.limit = limit;
+		this.creditLimit = creditLimit;
 		this.dueDate = dueDate;
 		this.payed = payed;
 	}
@@ -90,12 +94,12 @@ public class CreditCard {
 		this.number = number;
 	}
 
-	public Double getLimit() {
-		return limit;
+	public Double getCreditLimit() {
+		return creditLimit;
 	}
 
-	public void setLimit(Double limit) {
-		this.limit = limit;
+	public void setCreditLimit(Double creditLimit) {
+		this.creditLimit = creditLimit;
 	}
 
 	public Date getDueDate() {

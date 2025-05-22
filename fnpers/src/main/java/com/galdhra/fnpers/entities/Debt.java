@@ -14,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -47,9 +48,13 @@ public class Debt {
 	
 	@ManyToMany(mappedBy = "debtCreditCards")
 	private Set<CreditCard> creditCards = new HashSet<>();
+	
+	@ManyToOne
+	@JoinColumn(name="account_id")
+	private Account account;
 		
 	
-	private Debt() {};
+	private Debt() {}
 
 
 	public Debt(Long id, String name, Double amount, Double interest, Double origin, Date dueDate, Boolean stallment,

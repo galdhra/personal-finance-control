@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_investiment")
-public class Investiment {
+public class Investment {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
@@ -24,14 +24,26 @@ public class Investiment {
 	private Double initialAmount;
 	private Double redemption;
 	
+	@Column(columnDefinition = "TEXT")
+	private String observation;
+	
 	@ManyToOne
 	@JoinColumn(name="bank3_id")
 	private Bank bank3;
 	
-	@Column(columnDefinition = "TEXT")
-	private String observation;
+	@ManyToOne
+	@JoinColumn(name="investBudget_id")
+	private Budget budget;
+	
+	@ManyToOne
+	@JoinColumn(name="account_id")
+	private Account account;
+	
 
-	public Investiment(Long id, String name, Date date, Double initialAmount, Double redemption, Bank bank3, String observation) {
+	
+	
+
+	public Investment(Long id, String name, Date date, Double initialAmount, Double redemption, Bank bank3, String observation) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -86,7 +98,7 @@ public class Investiment {
 		return bank3;
 	}
 
-	public void setBank(Bank bank) {
+	public void setBank(Bank bank3) {
 		this.bank3 = bank3;
 	}
 
@@ -111,7 +123,7 @@ public class Investiment {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Investiment other = (Investiment) obj;
+		Investment other = (Investment) obj;
 		return Objects.equals(date, other.date) && Objects.equals(id, other.id)
 				&& Objects.equals(initialAmount, other.initialAmount) && Objects.equals(redemption, other.redemption);
 	}
