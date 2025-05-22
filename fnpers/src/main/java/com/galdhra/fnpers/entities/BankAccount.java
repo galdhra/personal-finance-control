@@ -2,6 +2,8 @@ package com.galdhra.fnpers.entities;
 
 import java.util.Objects;
 
+import com.galdhra.fnpers.enums.typeAccount;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +21,7 @@ public class BankAccount {
 	private Long id;
 	private String name;
 	private Integer number;
+	private typeAccount type;
 	
 	@ManyToOne
 	@JoinColumn(name="bank1_id")
@@ -32,11 +35,12 @@ public class BankAccount {
 	
 	public BankAccount() {}
 
-	public BankAccount(Long id, String name, Integer number, Bank bank) {
+	public BankAccount(Long id, String name, Integer number, typeAccount type, Bank bank) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.number = number;
+		this.type = type;
 		this.bank1 = bank;
 	}
 
@@ -62,6 +66,30 @@ public class BankAccount {
 
 	public void setNumber(Integer number) {
 		this.number = number;
+	}
+
+	public typeAccount getType() {
+		return type;
+	}
+
+	public void setType(typeAccount type) {
+		this.type = type;
+	}
+
+	public Bank getBank1() {
+		return bank1;
+	}
+
+	public void setBank1(Bank bank1) {
+		this.bank1 = bank1;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 	public Bank getBank() {
