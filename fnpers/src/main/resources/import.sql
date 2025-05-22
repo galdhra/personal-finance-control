@@ -45,3 +45,24 @@ INSERT INTO tb_investiment (initial_amount, redemption, date, name, observation,
 -- tb_goal 
 INSERT INTO tb_goal (now_amount, target, due, name, observation, account_id, budget_id, category_id)VALUES (5000.0, 1, '2025-12-31 00:00:00', 'Viagem João', 'Meta de férias', 1 ,2 ,1);
 INSERT INTO tb_goal (now_amount, target, due, name, observation, account_id, budget_id, category_id) VALUES (3000.0, 2, '2025-11-30 00:00:00', 'Notebook Maria', 'Compra parcelada', 2, 1, 2);
+
+--tb_credit_card_debt
+INSERT INTO tb_credit_card_debt (credit_card_id, debt_id) VALUES (1, 2);
+INSERT INTO tb_credit_card_debt (credit_card_id, debt_id) VALUES (2, 1);
+
+--tb_budget_debt
+INSERT INTO tb_budget_debt (budget_id, debt_id) VALUES (1, 2);
+INSERT INTO tb_budget_debt (budget_id, debt_id) VALUES (2, 1);
+
+--tb_budget_expense
+INSERT INTO tb_budget_expense (budget_id, expense_id) VALUES (1, 2);
+INSERT INTO tb_budget_expense (budget_id, expense_id) VALUES (2, 1);
+
+--tb_budget_income
+INSERT INTO tb_budget_income (budget_id, income_id) VALUES (1, 2);
+INSERT INTO tb_budget_income (budget_id, income_id) VALUES (2, 1);
+
+--tb_budget_investment
+INSERT INTO tb_budget_investment (budget_id, investment_id) VALUES (1, 2);
+INSERT INTO tb_budget_investment (budget_id, investment_id) VALUES (2, 1);
+
